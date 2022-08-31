@@ -1,0 +1,32 @@
+Here are related commands I used for this assignment:
+
+Two example commands to create a related SQLite3 database:
+#+begin_src sql
+database_connection = SQLite3::Database.new("db/my_database.db")
+
+database_connection.execute("SELECT * FROM cats;")
+#+end_src
+
+Commands to create a related 'pets.db' database:
+#+begin_src sql
+database_connection = SQLite3::Database.new("db/pets.db")
+#+end_src
+
+Commands to create an owners and cats table:
+#+begin_src sql
+database_connection.execute("CREATE TABLE IF NOT EXISTS cats(id INTEGER PRIMARY KEY, name TEXT, breed TEXT, age INTEGER)")
+
+database_connection.execute("CREATE TABLE IF NOT EXISTS owners(id INTEGER PRIMARY KEY, name TEXT)")
+#+end_src
+
+Commands to insert new cat and owner values into the existing tables:
+#+begin_src sql
+database_connection.execute("INSERT INTO cats (name, breed, age) VALUES ('Maru', 'scottish fold', 3)")
+
+database_connection.execute("INSERT INTO cats (name, breed, age) VALUES ('Hana', 'tortoiseshell', 1)")
+#+end_src
+
+NOTE:
+- The big idea for using ORM in this kind of manner include this:
+- Classes --> Tables
+- Instances --> Table Rows
